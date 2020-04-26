@@ -55,11 +55,19 @@ router
   .delete((req, res) => {
     let id = req.params.item_id;
     let index = items.findIndex((item) => item.id === +id);
-    items.splice(index,1);
-    res.json({message:"item deleted"+req.params.item_id});
+    items.splice(index, 1);
+    res.json({ message: "item deleted" + req.params.item_id });
+  })
+  .put((req, res) => {
+    let id = req.params.item_id;
+    let index = items.findIndex((item) => item.id === +id);
+    items[index].name = req.body.name;
+    items[index].nameItem = req.body.nameItem;
+    items[index].description = req.body.description;
+    res.json({ message: "item updated" + req.params.item_id });
   });
 
-  router
+router
   .route("/posts/:post_id")
   .get((req, res) => {
     let id = req.params.post_id;
@@ -69,8 +77,16 @@ router
   .delete((req, res) => {
     let id = req.params.post_id;
     let index = posts.findIndex((post) => post.id === +id);
-    posts.splice(index,1);
-    res.json({message:"post deleted"+req.params.post_id});
+    posts.splice(index, 1);
+    res.json({ message: "post deleted" + req.params.post_id });
+  })
+  .put((req, res) => {
+    let id = req.params.post_id;
+    let index = posts.findIndex((post) => post.id === +id);
+    posts[index].name = req.body.name;
+    posts[index].subject = req.body.subject;
+    posts[index].details = req.body.details;
+    res.json({ message: "post updated" + req.params.post_id });
   });
 
 app.use("*", (req, res) => res.status(404).send("404 Not found"));

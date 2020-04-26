@@ -1,0 +1,33 @@
+.pageLogin {
+  background-color: #6495ed;
+  min-height: 100vh;
+  position: relative;
+}
+.pageLogin2 {
+  margin-top: 25vh;
+}
+.pageLogin3 {
+  margin-top: 25vh;
+}
+.pageLogin4 {
+  margin-top: 3vh;
+}
+.pageLogin5 {
+    margin-top: 20px;
+    text-align: end;
+}
+.img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(https://www.thairath.co.th/media/4DQpjUtzLUwmJZZPG15DvAz7TXRC81MEP0wkMriL3iKB.jpg);
+}
+.textLabel {
+  font-size: 25px;
+}
+.label {
+  text-align: start;
+}
+.btn1 {
+  font-size: 20px;
+}
