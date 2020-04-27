@@ -1,0 +1,44 @@
+.pageFrom{
+    min-height: 100vh;
+    background-color: rgb(214, 214, 214);
+}
+.nav1{
+    margin-top: 20px;
+}
+.text_nav0{
+    text-align: center;
+    color: deeppink;
+    font-size: 20px;
+}
+.textHeader{
+    color: rgb(80, 80, 80);
+    margin-top: 50px;
+    margin-left: 25vh;
+    min-width: 100vh;
+    text-align: center;
+}
+.text-Add{
+    font-size: 80px;
+    text-align: center;
+}
+.forminP1{
+    text-align: start;
+    margin-top: 25px;
+    margin-left: 50px;
+}
+.textLabel{
+    font-size: 30px;
+    margin-left: 30vh;
+}
+.inP1{
+    margin-left: 25vh;
+    text-align: start;
+    width: 75vh;
+}
+.btn2{
+    margin-top: 20px;
+    text-align: center;
+    margin-right: 10vh;
+    background-color: greenyellow;
+    color: indigo;
+}

@@ -27,6 +27,7 @@
 }
 .label {
   text-align: start;
+  margin-left: -10vh;
 }
 .btn1 {
   font-size: 20px;
