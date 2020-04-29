@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect ,useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { allActions } from "../Reducer/Reducer";
@@ -16,6 +16,10 @@ import {
   Container,
   NavItem,
   Nav,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
 } from "reactstrap";
 
 function ItemList() {
@@ -45,7 +49,7 @@ function ItemList() {
                 </NavItem>
               </Nav>
             </Row>
-            <Row>
+            <Row style={{ marginTop: "20px" }}>
               {items.map((item, index) => (
                 <div key={index} style={{ margin: 5 }}>
                   <Col>
@@ -58,7 +62,30 @@ function ItemList() {
         </Container>
       );
     } else {
-      return <div>ไม่ผ่าน</div>;
+      return (
+        <Container>
+          <div>
+            <Row>
+              <Nav className="nav1">
+                <NavItem>
+                  <NavLink href="/items" className="text_nav0">
+                    Items
+                  </NavLink>
+                </NavItem>
+              </Nav>
+            </Row>
+            <Row style={{ marginTop: "20px" }}>
+              {items.map((item, index) => (
+                <div key={index} style={{ margin: 5 }}>
+                  <Col>
+                    <ItemCard {...item} />
+                  </Col>
+                </div>
+              ))}
+            </Row>
+          </div>
+        </Container>
+      );
     }
   };
 

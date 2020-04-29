@@ -1,7 +1,8 @@
 .btnCard{
     text-align: right;
 }
-.btnUpdate{
+.btnEdit{
+    margin-right: 3px;
     background-color: #E4DE3A;
 }
 .btnDelete{
