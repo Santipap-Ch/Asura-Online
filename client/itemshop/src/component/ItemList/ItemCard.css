@@ -1,0 +1,12 @@
+.btnCard{
+    text-align: right;
+}
+.btnUpdate{
+    background-color: #E4DE3A;
+}
+.btnDelete{
+    background-color: #F95940;
+}
+.textCard{
+    text-align: start;
+}
