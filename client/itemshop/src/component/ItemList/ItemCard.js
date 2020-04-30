@@ -22,7 +22,6 @@ import {
   Label,
   Spinner,
 } from "reactstrap";
-import { useEffect } from "react";
 
 function ItemCard(props) {
   const actions = bindActionCreators(allActions, useDispatch());

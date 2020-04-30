@@ -17,7 +17,6 @@ import {
   Container,
   NavItem,
   Nav,
-  NavbarText,
 } from "reactstrap";
 import "./formItem.css";
 
@@ -45,7 +44,7 @@ function FormItem(prop) {
     <div className="pageFrom">
           <Row>
             <Nav className="nav1">
-              <NavItem>
+              <NavItem style={{marginLeft:"15px"}}>
               <NavLink
                     onClick={(e) => {
                       e.preventDefault();

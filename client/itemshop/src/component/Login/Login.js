@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { allActions } from "../Reducer/Reducer";
 import { useHistory } from "react-router-dom";
-import GoogleLogin from "react-google-login";
 import "./login.css";
 import {
   Col,
@@ -90,13 +89,6 @@ function Login() {
                   LOGIN
                 </Button>
               </div>
-              {/* <GoogleLogin
-                className="googleAuth"
-                clientId="457858959347-7jetv19toiolur9vqissnaakbmcgr5k8.apps.googleusercontent.com"
-                buttonText="ลงชื่อเข้าใช้"
-                //   onSuccess={}
-                //   onFailure={}
-              /> */}
             </div>
           </Col>
         </Row>

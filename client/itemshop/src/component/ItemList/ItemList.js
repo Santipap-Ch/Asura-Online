@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { allActions } from "../Reducer/Reducer";
@@ -9,19 +9,10 @@ import "./ItemList.css";
 import {
   Col,
   Row,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
   NavLink,
   Container,
   NavItem,
   Nav,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
 } from "reactstrap";
 
 function ItemList(prop) {
