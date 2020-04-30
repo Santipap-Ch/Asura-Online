@@ -25,13 +25,16 @@ import {
 function ItemList() {
   const actions = bindActionCreators(allActions, useDispatch());
   const items = useSelector((state) => state.items);
+  const psuPass = useSelector(state=>state.psuPass);
 
   useEffect(() => {
     actions.getItem();
+    console.log("psu",psuPass.id);
+    
   }, []);
 
   const typeList = () => {
-    if (true) {
+    if (psuPass.id==5935512095) {
       return (
         <Container>
           <div>

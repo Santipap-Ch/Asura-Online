@@ -1,8 +1,11 @@
-let express = require("express");
-let bodyParser = require("body-parser");
-let router = express.Router();
-let app = express();
-let cors = require("cors");
+require('tls').DEFAULT_MIN_VERSION = 'TLSv1'
+const express = require("express");
+const bodyParser = require("body-parser");
+const router = express.Router();
+const soap = require("soap");
+const app = express();
+const cors = require("cors");
+const url = 'https://passport.psu.ac.th/authentication/authentication.asmx?wsdl';
 
 app.use(cors());
 app.use("/api", bodyParser.json(), router);
@@ -76,7 +79,7 @@ router.route("/login").post((req, res) => {
     else {
       let user = {};
       user.username = req.body.username;
-      user.password = req.body.password;
+      user.password = req.body.password;      
       client.GetStudentDetails(user, function (err, response) {
         if (err) console.error(err);
         else {

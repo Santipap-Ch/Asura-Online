@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { allActions } from "../Reducer/Reducer";
+import { useHistory } from "react-router-dom";
 import GoogleLogin from "react-google-login";
 import "./login.css";
 import {
@@ -10,9 +14,37 @@ import {
   Label,
   Input,
   Container,
+  Alert,
 } from "reactstrap";
 
 function Login() {
+  const actions = bindActionCreators(allActions, useDispatch());
+  const psuPass = useSelector((state) => state.psuPass);
+  const history = useHistory();
+  const [idUser, setidUser] = useState({
+    username: "",
+    password: ""
+  });
+
+  useEffect(() => {
+    if (psuPass.id) {
+      history.push("/items");
+    } else {
+      history.push("/");
+    }
+  }, [psuPass]);
+
+  const login = () => {    
+    if (idUser.username && idUser.password) {
+      actions.loginPsu(idUser);
+    console.log("id :", { psuPass });
+
+    } else {
+      // <Alert color="danger">Please enter your User ID and Password</Alert>
+      console.log("Please enter your User ID and Password");
+    }
+  };
+
   return (
     <div className="pageLogin">
       <Container>
@@ -31,21 +63,40 @@ function Login() {
               <div className="label">
                 <Label className="textLabel">Username</Label>
               </div>
-              <Input type="username" placeholder="username" />
+              <Input
+                type="username"
+                placeholder="username"
+                onChange={(e) =>
+                  setidUser({ ...idUser, username: e.target.value })
+                }
+              />
               <div className="label">
                 <Label className="textLabel">Password</Label>
               </div>
-              <Input type="password" placeholder="password" />
+              <Input
+                type="password"
+                placeholder="password"
+                onChange={(e) =>
+                  setidUser({ ...idUser, password: e.target.value })
+                }
+              />
               <div className="pageLogin5">
-                <Button className="btn1">LOGIN</Button>
+                <Button
+                  className="btn1"
+                  onClick={() => {
+                    login();
+                  }}
+                >
+                  LOGIN
+                </Button>
               </div>
-              <GoogleLogin
+              {/* <GoogleLogin
                 className="googleAuth"
                 clientId="457858959347-7jetv19toiolur9vqissnaakbmcgr5k8.apps.googleusercontent.com"
                 buttonText="ลงชื่อเข้าใช้"
                 //   onSuccess={}
                 //   onFailure={}
-              />
+              /> */}
             </div>
           </Col>
         </Row>
