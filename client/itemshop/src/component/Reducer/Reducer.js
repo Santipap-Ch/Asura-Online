@@ -10,6 +10,13 @@ export const itemReducer = (data = [], action) => {
       return action.items;
     case "ADD_ITEM":
       return [...data, action.data_item];
+    case "DELETE_ITEM":
+      return data.filter((item) => +action.id !== +item.id);
+    case "UPDATE_ITEM":
+      return data.map((item) => {
+        if (+item.id === +action.id) return action.itemNew;
+        else return item;
+      });
     default:
       return data;
   }
@@ -45,22 +52,24 @@ export const allActions = {
   },
   deleteItem: (id) => async (dispatch) => {
     await axios.delete(`http://localhost/api/items/${id}`, id);
+    dispatch({ type: "DELETE_ITEM", id });
   },
   updateItem: (data_new) => async (dispatch) => {
     await axios.put(`http://localhost/api/items/${data_new.id}`, {
       ...data_new,
     });
+    dispatch({ type: "UPDATE_ITEM", itemNew: data_new});
   },
 
   loginPsu: (data_login) => async (dispatch) => {
-    console.log("111",{...data_login});
+    console.log("111", { ...data_login });
     const result = await axios.post(`http://localhost/api/login`, data_login);
     const [id, name, surname] = [...result.data.GetStudentDetailsResult.string];
     dispatch({ type: "LOGIN", id: id, name: name, surname: surname });
   },
-  logoutPsu:()=>async(dispatch)=>{
-    dispatch({type:"LOGOUT"});
-  }
+  logoutPsu: () => async (dispatch) => {
+    dispatch({ type: "LOGOUT" });
+  },
 };
 
 export const rootReducer = combineReducers({
@@ -68,6 +77,6 @@ export const rootReducer = combineReducers({
   psuPass: loginReducer,
 });
 
-export const Reducer = createStore(rootReducer, applyMiddleware(logger,thunk));
+export const Reducer = createStore(rootReducer, applyMiddleware(thunk));
 
 export default Reducer;

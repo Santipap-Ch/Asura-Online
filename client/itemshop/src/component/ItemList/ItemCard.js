@@ -27,10 +27,11 @@ import { useEffect } from "react";
 function ItemCard(props) {
   const actions = bindActionCreators(allActions, useDispatch());
   const items = useSelector((state) => state.items);
+  const psuPass = useSelector(state=>state.psuPass);
 
   // useEffect(()=>{
   //   actions.getItem();
-  // },)
+  // },[items])
 
   const [modal, setModal] = useState(false);
 
@@ -127,14 +128,16 @@ function ItemCard(props) {
   };
 
   const deleteItem = () => {
+    console.log("Click Delete");
+    
     actions.deleteItem(props.id);
-    setTimeout(() => {
-      window.location.reload();
-    }, 1500);
+    // setTimeout(() => {
+    //   window.location.reload();
+    // }, 1500);
   };
 
   const typeCard = () => {
-    if (true) {
+    if (psuPass.id==5935512095) {
       return (
         <div>
           {showModal()}

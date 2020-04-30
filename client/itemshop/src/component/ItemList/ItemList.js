@@ -1,7 +1,8 @@
-import React, { useEffect ,useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { allActions } from "../Reducer/Reducer";
+import { useHistory } from "react-router-dom";
 import ItemCard from "./ItemCard";
 import "./ItemList.css";
 import {
@@ -22,31 +23,51 @@ import {
   ModalFooter,
 } from "reactstrap";
 
-function ItemList() {
+function ItemList(prop) {
   const actions = bindActionCreators(allActions, useDispatch());
   const items = useSelector((state) => state.items);
-  const psuPass = useSelector(state=>state.psuPass);
+  const psuPass = useSelector((state) => state.psuPass);
+  const history = useHistory();
 
   useEffect(() => {
+    if (psuPass.id != null) {
+      console.log("aaaa",psuPass.id);
+      history.push("/items");
+    }
+    else{
+      history.push('/')
+    }
     actions.getItem();
-    console.log("psu",psuPass.id);
-    
   }, []);
 
   const typeList = () => {
-    if (psuPass.id==5935512095) {
+    if (psuPass.id == 5935512095) {
       return (
         <Container>
           <div>
             <Row>
               <Nav className="nav1">
                 <NavItem>
-                  <NavLink href="/items" className="text_nav0">
+                  <NavLink
+                    onClick={(e) => {
+                      e.preventDefault();
+                      prop.history.push("/items");
+                      console.log("Click Items", { ...psuPass });
+                    }}
+                    className="text_nav0"
+                  >
                     Items
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="/formitem" className="text_nav0">
+                  <NavLink
+                    onClick={(e) => {
+                      e.preventDefault();
+                      prop.history.push("/formitem");
+                      console.log("Click Add", { ...psuPass });
+                    }}
+                    className="text_nav0"
+                  >
                     Add Item
                   </NavLink>
                 </NavItem>
@@ -71,7 +92,14 @@ function ItemList() {
             <Row>
               <Nav className="nav1">
                 <NavItem>
-                  <NavLink href="/items" className="text_nav0">
+                  <NavLink
+                    onClick={(e) => {
+                      e.preventDefault();
+                      prop.history.push("/items");
+                      console.log("Click Items", { ...psuPass });
+                    }}
+                    className="text_nav0"
+                  >
                     Items
                   </NavLink>
                 </NavItem>

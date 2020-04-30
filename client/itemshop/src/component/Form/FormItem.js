@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { allActions } from "../Reducer/Reducer";
 import { useHistory } from "react-router-dom";
@@ -18,8 +18,9 @@ import {
 } from "reactstrap";
 import "./formItem.css";
 
-function FormItem() {
+function FormItem(prop) {
   const actions = bindActionCreators(allActions, useDispatch());
+  const psuPass = useSelector(state=>state.psuPass)
   const history = useHistory();
 
   const [dataform, setForm] = useState({
@@ -43,14 +44,28 @@ function FormItem() {
           <Row>
             <Nav className="nav1">
               <NavItem>
-                <NavLink href="/items" className="text_nav0">
-                  Items
-                </NavLink>
+              <NavLink
+                    onClick={(e) => {
+                      e.preventDefault();
+                      prop.history.push("/items");
+                      console.log("Click Items", { ...psuPass });
+                    }}
+                    className="text_nav0"
+                  >
+                    Items
+                  </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/formitem" className="text_nav0">
-                  Add Item
-                </NavLink>
+              <NavLink
+                    onClick={(e) => {
+                      e.preventDefault();
+                      prop.history.push("/formitem");
+                      console.log("Click Add", { ...psuPass });
+                    }}
+                    className="text_nav0"
+                  >
+                    Add Item
+                  </NavLink>
               </NavItem>
             </Nav>
           </Row>
