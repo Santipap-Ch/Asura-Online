@@ -144,7 +144,7 @@ function ItemCard(props) {
         <div>
           {showModal()}
 
-          <Card style={{ width: "800px" }}>
+          <Card className="background1" style={{ width: "800px" }}>
             <div className="btnCard">
               <Button
                 className="btnEdit"
@@ -166,7 +166,7 @@ function ItemCard(props) {
             </div>
             <Row>
               <Col md="4" style={{ display: "table" }}>
-                <CardImg top width="100%" src={props.img} alt="Card image" />
+                <CardImg className="cardImg" top width="100%" src={props.img} alt="Card image" />
               </Col>
               <Col>
                 <CardBody className="textCard">
@@ -200,7 +200,7 @@ function ItemCard(props) {
       );
     } else {
       return (
-        <Card style={{ width: "800px" }}>
+        <Card className="background1" style={{ width: "800px" }}>
           <Row>
             <Col md="4" style={{ display: "table" }}>
               <CardImg top width="100%" src={props.img} alt="Card image" />

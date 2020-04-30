@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import { allActions } from "../Reducer/Reducer";
 import { useHistory } from "react-router-dom";
 import ItemCard from "./ItemCard";
+import Navbar from "../Navbar/Navbar"
 import "./ItemList.css";
 import {
   Col,
@@ -43,11 +44,10 @@ function ItemList(prop) {
   const typeList = () => {
     if (psuPass.id == 5935512095) {
       return (
-        <Container>
-          <div>
+        <div>
             <Row>
               <Nav className="nav1">
-                <NavItem>
+                <NavItem style={{marginLeft:"15px"}}>
                   <NavLink
                     onClick={(e) => {
                       e.preventDefault();
@@ -71,40 +71,11 @@ function ItemList(prop) {
                     Add Item
                   </NavLink>
                 </NavItem>
+                <Navbar/>
               </Nav>
             </Row>
-            <Row style={{ marginTop: "20px" }}>
-              {items.map((item, index) => (
-                <div key={index} style={{ margin: 5 }}>
-                  <Col style={{marginLeft:"50px"}}>
-                    <ItemCard {...item} />
-                  </Col>
-                </div>
-              ))}
-            </Row>
-          </div>
-        </Container>
-      );
-    } else {
-      return (
         <Container>
           <div>
-            <Row>
-              <Nav className="nav1">
-                <NavItem>
-                  <NavLink
-                    onClick={(e) => {
-                      e.preventDefault();
-                      prop.history.push("/items");
-                      console.log("Click Items", { ...psuPass });
-                    }}
-                    className="text_nav0"
-                  >
-                    Items
-                  </NavLink>
-                </NavItem>
-              </Nav>
-            </Row>
             <Row style={{ marginTop: "20px" }}>
               {items.map((item, index) => (
                 <div key={index} style={{ margin: 5 }}>
@@ -116,6 +87,42 @@ function ItemList(prop) {
             </Row>
           </div>
         </Container>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+            <Row>
+              <Nav className="nav1">
+                <NavItem style={{marginLeft:"15px"}}>
+                  <NavLink
+                    onClick={(e) => {
+                      e.preventDefault();
+                      prop.history.push("/items");
+                      console.log("Click Items", { ...psuPass });
+                    }}
+                    className="text_nav0"
+                  >
+                    Items
+                  </NavLink>
+                </NavItem>
+                <Navbar/>
+              </Nav>
+            </Row>
+        <Container>
+          <div>
+            <Row style={{ marginTop: "20px" }}>
+              {items.map((item, index) => (
+                <div key={index} style={{ margin: 5 }}>
+                  <Col style={{marginLeft:"150px"}}>
+                    <ItemCard {...item} />
+                  </Col>
+                </div>
+              ))}
+            </Row>
+          </div>
+        </Container>
+        </div>
       );
     }
   };

@@ -11,3 +11,9 @@
 .textCard{
     text-align: start;
 }
+.background1:hover{
+    background-color: rgb(219, 219, 219);
+}
+.cardImg{
+    margin: 3px;
+}

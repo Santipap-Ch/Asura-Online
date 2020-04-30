@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { allActions } from "../Reducer/Reducer";
 import { useHistory } from "react-router-dom";
+import Navbar from "../Navbar/Navbar"
+
 import {
   Col,
   Row,
@@ -15,6 +17,7 @@ import {
   Container,
   NavItem,
   Nav,
+  NavbarText,
 } from "reactstrap";
 import "./formItem.css";
 
@@ -40,8 +43,6 @@ function FormItem(prop) {
 
   return (
     <div className="pageFrom">
-      <Container>
-        <Form>
           <Row>
             <Nav className="nav1">
               <NavItem>
@@ -68,8 +69,11 @@ function FormItem(prop) {
                     Add Item
                   </NavLink>
               </NavItem>
+              <Navbar/>
             </Nav>
           </Row>
+      <Container>
+        <Form>
           <Row>
             <FormGroup align="center">
               <div className="textHeader">
@@ -81,7 +85,7 @@ function FormItem(prop) {
               <Input
                 className="inP1"
                 type="text"
-                placeholder="ชื่อ นามสกุล"
+                placeholder="ชื่อ"
                 name="name"
                 onChange={(e) => setForm({ ...dataform, name: e.target.value })}
               />
