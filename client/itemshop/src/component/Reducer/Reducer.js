@@ -1,12 +1,11 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import logger from "redux-logger";
 import axios from "axios";
+import { useLayoutEffect } from "react";
 
 export const itemReducer = (data = [], action) => {
   switch (action.type) {
     case "GET_ITEM":
-      console.log("action", action.items);
       return action.items;
     case "ADD_ITEM":
       return [...data, action.data_item];
@@ -42,28 +41,36 @@ export const loginReducer = (data = {}, action) => {
 
 export const allActions = {
   getItem: () => async (dispatch) => {
-    await axios.get(`http://localhost/api/items`).then((res) => {
+    await axios.get(`https://lostitem.herokuapp.com/api/items`).then((res) => {
       dispatch({ type: "GET_ITEM", items: res.data });
     });
   },
   addItem: (data_form) => async (dispatch) => {
-    await axios.post(`http://localhost/api/insert`, { ...data_form });
+    await axios.post(`https://lostitem.herokuapp.com/api/insert`, {
+      ...data_form,
+    });
     dispatch({ type: "ADD_ITEM", data_item: { ...data_form } });
   },
   deleteItem: (id) => async (dispatch) => {
-    await axios.delete(`http://localhost/api/items/${id}`, id);
+    console.log(id);
+
+    await axios.delete(`https://lostitem.herokuapp.com/api/items/${id}`, id);
     dispatch({ type: "DELETE_ITEM", id });
   },
   updateItem: (data_new) => async (dispatch) => {
-    await axios.put(`http://localhost/api/items/${data_new.id}`, {
-      ...data_new,
-    });
-    dispatch({ type: "UPDATE_ITEM", itemNew: data_new});
+    await axios.put(
+      `https://lostitem.herokuapp.com/api/items/${data_new.id}`,
+      data_new
+    );
+    dispatch({ type: "UPDATE_ITEM", itemNew: data_new ,id:data_new.id});
   },
 
   loginPsu: (data_login) => async (dispatch) => {
     console.log("111", { ...data_login });
-    const result = await axios.post(`http://localhost/api/login`, data_login);
+    const result = await axios.post(
+      `https://lostitem.herokuapp.com/api/login`,
+      data_login
+    );
     const [id, name, surname] = [...result.data.GetStudentDetailsResult.string];
     dispatch({ type: "LOGIN", id: id, name: name, surname: surname });
   },

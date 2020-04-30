@@ -76,7 +76,7 @@ function ItemList(prop) {
             <Row style={{ marginTop: "20px" }}>
               {items.map((item, index) => (
                 <div key={index} style={{ margin: 5 }}>
-                  <Col>
+                  <Col style={{marginLeft:"50px"}}>
                     <ItemCard {...item} />
                   </Col>
                 </div>
@@ -108,7 +108,7 @@ function ItemList(prop) {
             <Row style={{ marginTop: "20px" }}>
               {items.map((item, index) => (
                 <div key={index} style={{ margin: 5 }}>
-                  <Col>
+                  <Col style={{marginLeft:"150px"}}>
                     <ItemCard {...item} />
                   </Col>
                 </div>

@@ -52,7 +52,7 @@ function ItemCard(props) {
   const updateCard = async () => {
     await actions.updateItem({ ...data_new });
     setModal(false);
-    await actions.getItem();
+    actions.getItem();    
   };
 
   const toggle = () => {
@@ -117,7 +117,7 @@ function ItemCard(props) {
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={updateCard}>
-            Do Something
+            Update
           </Button>{" "}
           <Button color="secondary" onClick={toggle}>
             Cancel
@@ -128,12 +128,14 @@ function ItemCard(props) {
   };
 
   const deleteItem = () => {
-    console.log("Click Delete");
+    console.log("Click Delete ",props.id);
     
     actions.deleteItem(props.id);
     // setTimeout(() => {
     //   window.location.reload();
     // }, 1500);
+    console.log("items ",items);
+
   };
 
   const typeCard = () => {

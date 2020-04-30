@@ -35,6 +35,7 @@ function FormItem(prop) {
   const addData=()=>{
     actions.addItem(dataform)
     history.push('/items')
+    actions.getItem()
   }
 
   return (
